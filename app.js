@@ -20,13 +20,9 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/makebook", async (req, res) => {
-  const book = new Book({
-    title: "Lost Stars",
-    description: "a great star wars novel!",
-  });
-  await book.save();
-  res.send(book);
+app.get("/books", async (req, res) => {
+  const books = await Book.find({});
+  res.render("books/index", { books });
 });
 
 app.listen(3000, () => {
