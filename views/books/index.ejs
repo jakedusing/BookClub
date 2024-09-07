@@ -9,7 +9,7 @@
     <h1>All Books</h1>
     <ul>
       <% for (let book of books) {%>
-      <li><%= book.title %></li>
+      <li><a href="books/<%= book._id %>"><%= book.title %></a></li>
       <% } %>
     </ul>
   </body>
