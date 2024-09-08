@@ -7,6 +7,9 @@
   </head>
   <body>
     <h1>All Books</h1>
+    <div>
+      <a href="/books/new">Add a Book</a>
+    </div>
     <ul>
       <% for (let book of books) {%>
       <li><a href="books/<%= book._id %>"><%= book.title %></a></li>
