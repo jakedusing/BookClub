@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const Book = require("./models/book");
 
 mongoose.connect("mongodb://localhost:27017/bookclub");
@@ -17,6 +18,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -40,6 +42,17 @@ app.post("/books", async (req, res) => {
 app.get("/books/:id", async (req, res) => {
   const book = await Book.findById(req.params.id);
   res.render("books/show", { book });
+});
+
+app.get("/books/:id/edit", async (req, res) => {
+  const book = await Book.findById(req.params.id);
+  res.render("books/edit", { book });
+});
+
+app.put("/books/:id", async (req, res) => {
+  const { id } = req.params;
+  const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
+  res.redirect(`/books/${book._id}`);
 });
 
 app.listen(3000, () => {
