@@ -11,6 +11,11 @@
     <p>
       <a href="/books/<%=book._id%>/edit">Edit</a>
     </p>
+    <p>
+      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form>
+    </p>
     <footer>
       <a href="/books">All Books</a>
     </footer>
