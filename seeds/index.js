@@ -18,6 +18,7 @@ const seedDB = async () => {
       title: bookSeeds[random60].title,
       author: bookSeeds[random60].author,
       description: bookSeeds[random60].description,
+      image: `https://picsum.photos/400?random=${Math.random()}`,
     });
     await book.save();
   }
