@@ -1,16 +1,29 @@
 <% layout("layouts/boilerplate")%>
-    <h1><%=book.title %></h1>
-    <h2><%=book.author %></h2>
-    <img src="<%= book.image %>" alt="">
-    <p><%=book.description%></p>
-    <p>
-      <a href="/books/<%=book._id%>/edit">Edit</a>
-    </p>
-    <p>
-      <form action="/books/<%=book._id%>?_method=DELETE" method="POST">
-        <button>Delete</button>
-      </form>
-    </p>
-    <footer>
-      <a href="/books">All Books</a>
-    </footer>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card mb-3">
+      <img src="<%= book.image %>" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"><%= book.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= book.author %></li>
+        <li class="list-group-item">A second item</li>
+      </ul>
+      <div class="card-body">
+        <a class="card-link btn btn-info" href="/books/<%=book._id%>/edit"
+          >Edit</a
+        >
+        <form
+          class="d-inline"
+          action="/books/<%=book._id%>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
