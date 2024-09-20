@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
+const Joi = require("joi");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
@@ -43,7 +44,21 @@ app.get("/books/new", (req, res) => {
 app.post(
   "/books",
   catchAsync(async (req, res, next) => {
-    if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
+    // if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
+    const bookSchema = Joi.object({
+      book: Joi.object({
+        title: Joi.string().required(),
+        author: Joi.string().required(),
+        image: Joi.string().required(),
+        description: Joi.string().required(),
+      }).required(),
+    });
+    const { error } = bookSchema.validate(req.body);
+    if (error) {
+      // details is an array, need to grab each individual one
+      const msg = error.details.map((el) => el.message).join(",");
+      throw new ExpressError(msg, 400);
+    }
     const book = new Book(req.body.book);
     await book.save();
     res.redirect(`/books/${book._id}`);
