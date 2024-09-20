@@ -3,9 +3,9 @@ const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 const Book = require("./models/book");
-const catchAsync = require("./utils/catchAsync");
 
 mongoose.connect("mongodb://localhost:27017/bookclub");
 
@@ -43,6 +43,7 @@ app.get("/books/new", (req, res) => {
 app.post(
   "/books",
   catchAsync(async (req, res, next) => {
+    if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
     const book = new Book(req.body.book);
     await book.save();
     res.redirect(`/books/${book._id}`);
@@ -83,8 +84,14 @@ app.delete(
   })
 );
 
+app.all(/(.*)/, (req, res, next) => {
+  next(new ExpressError("Page Not Found", 404));
+});
+
 app.use((err, req, res, next) => {
-  res.send("Oh boy, something went wrong!");
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Oh No, Something went wrong!";
+  res.status(statusCode).render("error", { err });
 });
 
 app.listen(3000, () => {
