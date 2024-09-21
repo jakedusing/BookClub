@@ -6,6 +6,12 @@ const BookSchema = new Schema({
   image: String,
   author: String,
   description: String,
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Book", BookSchema);
