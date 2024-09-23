@@ -8,6 +8,7 @@ const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 const Book = require("./models/book");
+const Review = require("./models/review");
 
 mongoose.connect("mongodb://localhost:27017/bookclub");
 
@@ -96,6 +97,18 @@ app.delete(
     const { id } = req.params;
     await Book.findByIdAndDelete(id);
     res.redirect("/books");
+  })
+);
+
+app.post(
+  "/books/:id/reviews",
+  catchAsync(async (req, res) => {
+    const book = await Book.findById(req.params.id);
+    const review = new Review(req.body.review);
+    book.reviews.push(review);
+    await review.save();
+    await book.save();
+    res.redirect(`/books/${book._id}`);
   })
 );
 
