@@ -78,7 +78,7 @@ app.post(
 app.get(
   "/books/:id",
   catchAsync(async (req, res) => {
-    const book = await Book.findById(req.params.id);
+    const book = await Book.findById(req.params.id).populate("reviews");
     res.render("books/show", { book });
   })
 );
