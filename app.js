@@ -3,7 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const Joi = require("joi");
-const { bookSchema } = require("./schemas");
+const { bookSchema, reviewSchema } = require("./schemas");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
@@ -31,6 +31,16 @@ const validateBook = (req, res, next) => {
   const { error } = bookSchema.validate(req.body);
   if (error) {
     // details is an array, need to grab each individual one
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
     const msg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(msg, 400);
   } else {
@@ -102,6 +112,7 @@ app.delete(
 
 app.post(
   "/books/:id/reviews",
+  validateReview,
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
     const review = new Review(req.body.review);
