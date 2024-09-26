@@ -10,6 +10,8 @@ const methodOverride = require("method-override");
 const Book = require("./models/book");
 const Review = require("./models/review");
 
+const books = require("./routes/books");
+
 mongoose.connect("mongodb://localhost:27017/bookclub");
 
 const db = mongoose.connection;
@@ -27,16 +29,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-const validateBook = (req, res, next) => {
-  const { error } = bookSchema.validate(req.body);
-  if (error) {
-    // details is an array, need to grab each individual one
-    const msg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
+app.use("/books", books);
 
 const validateReview = (req, res, next) => {
   const { error } = reviewSchema.validate(req.body);
@@ -51,64 +44,6 @@ const validateReview = (req, res, next) => {
 app.get("/", (req, res) => {
   res.render("home");
 });
-
-app.get(
-  "/books",
-  catchAsync(async (req, res) => {
-    const books = await Book.find({});
-    res.render("books/index", { books });
-  })
-);
-
-app.get("/books/new", (req, res) => {
-  res.render("books/new");
-});
-
-app.post(
-  "/books",
-  validateBook,
-  catchAsync(async (req, res, next) => {
-    // if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
-    const book = new Book(req.body.book);
-    await book.save();
-    res.redirect(`/books/${book._id}`);
-  })
-);
-
-app.get(
-  "/books/:id",
-  catchAsync(async (req, res) => {
-    const book = await Book.findById(req.params.id).populate("reviews");
-    res.render("books/show", { book });
-  })
-);
-
-app.get(
-  "/books/:id/edit",
-  catchAsync(async (req, res) => {
-    const book = await Book.findById(req.params.id);
-    res.render("books/edit", { book });
-  })
-);
-
-app.put(
-  "/books/:id",
-  validateBook,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
-    res.redirect(`/books/${book._id}`);
-  })
-);
-
-app.delete(
-  "/books/:id",
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Book.findByIdAndDelete(id);
-    res.redirect("/books");
-  })
-);
 
 app.post(
   "/books/:id/reviews",
