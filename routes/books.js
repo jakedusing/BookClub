@@ -36,7 +36,7 @@ router.post(
     // if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
     const book = new Book(req.body.book);
     await book.save();
-    req.flash("success", "Successfully made added a new book!");
+    req.flash("success", "Successfully added a new book!");
     res.redirect(`/books/${book._id}`);
   })
 );
@@ -63,6 +63,7 @@ router.put(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
+    req.flash("success", "Successfully updated book");
     res.redirect(`/books/${book._id}`);
   })
 );
@@ -72,6 +73,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Book.findByIdAndDelete(id);
+    req.flash("success", "Successfully deleted book");
     res.redirect("/books");
   })
 );
