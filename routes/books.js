@@ -45,6 +45,10 @@ router.get(
   "/:id",
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id).populate("reviews");
+    if (!book) {
+      req.flash("error", "Cannot find that book!");
+      return res.redirect("/books");
+    }
     res.render("books/show", { book });
   })
 );
@@ -53,6 +57,10 @@ router.get(
   "/:id/edit",
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
+    if (!book) {
+      req.flash("error", "Cannot find that book!");
+      return res.redirect("/books");
+    }
     res.render("books/edit", { book });
   })
 );
