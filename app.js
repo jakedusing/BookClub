@@ -10,8 +10,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 
-const books = require("./routes/books");
-const reviews = require("./routes/reviews");
+const userRoutes = require("./routes/users");
+const bookRoutes = require("./routes/books");
+const reviewRoutes = require("./routes/reviews");
 
 mongoose.connect("mongodb://localhost:27017/bookclub");
 
@@ -62,8 +63,9 @@ app.get("/fakeUser", async (req, res) => {
   res.send(newUser);
 });
 
-app.use("/books", books);
-app.use("/books/:id/reviews", reviews);
+app.use("/", userRoutes);
+app.use("/books", bookRoutes);
+app.use("/books/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
   res.render("home");
