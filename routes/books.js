@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const { bookSchema } = require("../schemas");
+const { isLoggedIn } = require("../middleware");
 
 const ExpressError = require("../utils/ExpressError");
 const Book = require("../models/book");
@@ -25,12 +26,13 @@ router.get(
   })
 );
 
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
   res.render("books/new");
 });
 
 router.post(
   "/",
+  isLoggedIn,
   validateBook,
   catchAsync(async (req, res, next) => {
     // if (!req.body.book) throw new ExpressError("Invalid Book Data", 400);
@@ -55,6 +57,7 @@ router.get(
 
 router.get(
   "/:id/edit",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
     if (!book) {
@@ -67,6 +70,7 @@ router.get(
 
 router.put(
   "/:id",
+  isLoggedIn,
   validateBook,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -78,6 +82,7 @@ router.put(
 
 router.delete(
   "/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Book.findByIdAndDelete(id);
