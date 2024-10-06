@@ -17,6 +17,7 @@ const seedDB = async () => {
     const book = new Book({
       title: bookSeeds[random60].title,
       author: bookSeeds[random60].author,
+      user: "6701ef401799716b86f31afa",
       description: bookSeeds[random60].description,
       image: `https://picsum.photos/400?random=${Math.random()}`,
     });
