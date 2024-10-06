@@ -12,6 +12,7 @@
         <li class="list-group-item"><%= book.author %></li>
         <li class="list-group-item"><%=book.user.username %></li>
       </ul>
+      <% if(currentUser && book.user.equals(currentUser_id)) {%>
       <div class="card-body">
         <a class="card-link btn btn-info" href="/books/<%=book._id%>/edit"
           >Edit</a
@@ -24,6 +25,7 @@
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
+      <% } %>
     </div>
   </div>
   <div class="col-6">
