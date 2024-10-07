@@ -77,7 +77,12 @@ router.put(
   validateBook,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
+    const book = await Book.findById(id);
+    if (!book.user.equals(req.user._id)) {
+      req.flash("error", "you do not have permission to do that!");
+      return res.redirect("/books/${id}");
+    }
+    const boook = await Book.findByIdAndUpdate(id, { ...req.body.book });
     req.flash("success", "Successfully updated book");
     res.redirect(`/books/${book._id}`);
   })
