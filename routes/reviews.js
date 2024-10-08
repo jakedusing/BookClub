@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
-const { validateReview } = require("../middleware");
+const { validateReview, isLoggedIn } = require("../middleware");
 const Book = require("../models/book");
 const Review = require("../models/review");
 
@@ -9,10 +9,12 @@ const catchAsync = require("../utils/catchAsync");
 
 router.post(
   "/",
+  isLoggedIn,
   validateReview,
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
     const review = new Review(req.body.review);
+    review.owner = req.user._id;
     book.reviews.push(review);
     await review.save();
     await book.save();
