@@ -1,22 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
-const { bookSchema } = require("../schemas");
-const { isLoggedIn } = require("../middleware");
+const { isLoggedIn, isUser, validateBook } = require("../middleware");
 
-const ExpressError = require("../utils/ExpressError");
 const Book = require("../models/book");
-
-const validateBook = (req, res, next) => {
-  const { error } = bookSchema.validate(req.body);
-  if (error) {
-    // details is an array, need to grab each individual one
-    const msg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
 
 router.get(
   "/",
@@ -49,7 +36,6 @@ router.get(
     const book = await Book.findById(req.params.id)
       .populate("reviews")
       .populate("user");
-    console.log(book);
     if (!book) {
       req.flash("error", "Cannot find that book!");
       return res.redirect("/books");
@@ -61,6 +47,7 @@ router.get(
 router.get(
   "/:id/edit",
   isLoggedIn,
+  isUser,
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id);
     if (!book) {
@@ -74,15 +61,11 @@ router.get(
 router.put(
   "/:id",
   isLoggedIn,
+  isUser,
   validateBook,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const book = await Book.findById(id);
-    if (!book.user.equals(req.user._id)) {
-      req.flash("error", "you do not have permission to do that!");
-      return res.redirect("/books/${id}");
-    }
-    const boook = await Book.findByIdAndUpdate(id, { ...req.body.book });
+    const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
     req.flash("success", "Successfully updated book");
     res.redirect(`/books/${book._id}`);
   })
@@ -91,6 +74,7 @@ router.put(
 router.delete(
   "/:id",
   isLoggedIn,
+  isUser,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Book.findByIdAndDelete(id);
