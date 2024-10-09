@@ -34,7 +34,12 @@ router.get(
   "/:id",
   catchAsync(async (req, res) => {
     const book = await Book.findById(req.params.id)
-      .populate("reviews")
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "owner",
+        },
+      })
       .populate("user");
     if (!book) {
       req.flash("error", "Cannot find that book!");
