@@ -6,24 +6,19 @@ const { isLoggedIn, isUser, validateBook } = require("../middleware");
 
 const Book = require("../models/book");
 
-router.get("/", catchAsync(books.index));
+router
+  .route("/")
+  .get(catchAsync(books.index))
+  .post(isLoggedIn, validateBook, catchAsync(books.createBook));
 
 router.get("/new", isLoggedIn, books.renderNewForm);
 
-router.post("/", isLoggedIn, validateBook, catchAsync(books.createBook));
-
-router.get("/:id", catchAsync(books.showBook));
+router
+  .route("/:id")
+  .get(catchAsync(books.showBook))
+  .put(isLoggedIn, isUser, validateBook, catchAsync(books.updateBook))
+  .delete(isLoggedIn, isUser, catchAsync(books.deleteBook));
 
 router.get("/:id/edit", isLoggedIn, isUser, catchAsync(books.renderEditForm));
-
-router.put(
-  "/:id",
-  isLoggedIn,
-  isUser,
-  validateBook,
-  catchAsync(books.updateBook)
-);
-
-router.delete("/:id", isLoggedIn, isUser, catchAsync(books.deleteBook));
 
 module.exports = router;
