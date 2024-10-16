@@ -4,7 +4,8 @@ const books = require("../controllers/books");
 const catchAsync = require("../utils/catchAsync");
 const { isLoggedIn, isUser, validateBook } = require("../middleware");
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const { storage } = require("../cloudinary");
+const upload = multer({ storage });
 
 const Book = require("../models/book");
 
@@ -13,7 +14,8 @@ router
   .get(catchAsync(books.index))
   // .post(isLoggedIn, validateBook, catchAsync(books.createBook));
   .post(upload.array("image"), (req, res) => {
-    res.send(req.body, req.files);
+    console.log(req.body, req.files);
+    res.send("IT WORKED?!");
   });
 
 router.get("/new", isLoggedIn, books.renderNewForm);
