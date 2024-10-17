@@ -24,7 +24,13 @@ router.get("/new", isLoggedIn, books.renderNewForm);
 router
   .route("/:id")
   .get(catchAsync(books.showBook))
-  .put(isLoggedIn, isUser, validateBook, catchAsync(books.updateBook))
+  .put(
+    isLoggedIn,
+    isUser,
+    upload.array("image"),
+    validateBook,
+    catchAsync(books.updateBook)
+  )
   .delete(isLoggedIn, isUser, catchAsync(books.deleteBook));
 
 router.get("/:id/edit", isLoggedIn, isUser, catchAsync(books.renderEditForm));
