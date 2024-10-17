@@ -9,8 +9,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  folder: "BookClub",
-  allowedFormats: ["jpeg", "png", "jpg"],
+  params: {
+    folder: "BookClub",
+    allowedFormats: ["jpeg", "png", "jpg"],
+  },
 });
 
 module.exports = {

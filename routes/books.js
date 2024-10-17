@@ -12,11 +12,12 @@ const Book = require("../models/book");
 router
   .route("/")
   .get(catchAsync(books.index))
-  // .post(isLoggedIn, validateBook, catchAsync(books.createBook));
-  .post(upload.array("image"), (req, res) => {
-    console.log(req.body, req.files);
-    res.send("IT WORKED?!");
-  });
+  .post(
+    isLoggedIn,
+    upload.array("image"),
+    validateBook,
+    catchAsync(books.createBook)
+  );
 
 router.get("/new", isLoggedIn, books.renderNewForm);
 
