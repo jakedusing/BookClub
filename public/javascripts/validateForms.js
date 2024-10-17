@@ -1,0 +1,24 @@
+(function () {
+  "use strict";
+
+  bsCustomFileInput.init();
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const form = document.querySelectorAll(".validate-form");
+
+  // Loops over them and prevent submission
+  Array.from(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
