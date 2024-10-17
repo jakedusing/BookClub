@@ -15,6 +15,7 @@ module.exports.createBook = async (req, res, next) => {
   book.user = req.user._id;
   //console.log(req.user._id);
   await book.save();
+  console.log(book);
   req.flash("success", "Successfully added a new book!");
   res.redirect(`/books/${book._id}`);
 };

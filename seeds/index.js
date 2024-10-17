@@ -19,7 +19,16 @@ const seedDB = async () => {
       author: bookSeeds[random60].author,
       user: "6701ef401799716b86f31afa",
       description: bookSeeds[random60].description,
-      image: `https://picsum.photos/400?random=${Math.random()}`,
+      images: [
+        {
+          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729178695/BookClub/gwxftzzdflp4snisxxsy.png",
+          filename: "BookClub/gwxftzzdflp4snisxxsy",
+        },
+        {
+          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729178695/BookClub/eh1kk7agcjawvravv13c.jpg",
+          filename: "BookClub/eh1kk7agcjawvravv13c",
+        },
+      ],
     });
     await book.save();
   }
