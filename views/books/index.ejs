@@ -1,26 +1,38 @@
 <% layout("layouts/boilerplate")%>
-<h1>All Books</h1>
-<div>
-  <a href="/books/new">Add a Book</a>
-</div>
-<% for (let book of books) {%>
-<div class="card mb-3">
-  <div class="row">
-    <div class="col-md-4">
-      <img class="img-fluid" src="<%=book.images[0].url%>" alt="" />
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%=book.title %></h5>
-        <p class="card-text"><%=book.description %></p>
-        <p class="card-text">
-          <small class="text-grey-50"><%=book.author %></small>
-        </p>
-        <a class="btn btn-primary" href="/books/<%=book._id  %>"
-          >View <%=book.title %></a
-        >
+
+<div class="container">
+  <!-- Heading and Intro Section -->
+  <div class="text-center mb-5">
+    <h1 class="display-4">All Books</h1>
+    <p class="lead">
+      Explore our collection of books, add your own, and dive into the reviews
+      from fellow readers.
+    </p>
+    <a href="/books/new" class="btn btn-lg btn-primary">Add a Book</a>
+  </div>
+
+  <!-- Book Cards Section -->
+  <% for (let book of books) { %>
+  <div class="card mb-4 shadow-sm border-light">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          class="img-fluid rounded-start"
+          src="<%= book.images[0].url %>"
+          alt="<%= book.title %>"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text"><%= book.description %></p>
+          <p class="card-text">
+            <small class="text-muted">by <%= book.author %></small>
+          </p>
+          <a href="/books/<%= book._id %>" class="btn btn-primary">View Book</a>
+        </div>
       </div>
     </div>
   </div>
+  <% } %>
 </div>
-<% } %>
