@@ -2,7 +2,7 @@ const Book = require("../models/book");
 const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
-  const books = await Book.find({});
+  const books = await Book.find({}).populate("user");
   res.render("books/index", { books });
 };
 

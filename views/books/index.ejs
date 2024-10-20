@@ -72,6 +72,13 @@
             <small><strong>Author:</strong> <%= book.author %></small>
           </p>
 
+          <!-- Author Info -->
+          <p class="card-text" style="font-size: 0.9rem; color: #888">
+            <small
+              ><strong>Submitted by:</strong> <%= book.user.username %></small
+            >
+          </p>
+
           <!-- View Book Button -->
           <a
             href="/books/<%= book._id %>"
