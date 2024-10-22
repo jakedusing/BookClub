@@ -29,6 +29,8 @@ router
 router.get("/logout", users.logout);
 
 //User Profile route (GET request, only accessible if Logged in)
-router.get("/profile", isLoggedIn, catchAsync(users.showProfile));
+//router.get("/profile", isLoggedIn, catchAsync(users.showProfile));
+
+router.get("/users/:id", isLoggedIn, catchAsync(users.showProfile));
 
 module.exports = router;

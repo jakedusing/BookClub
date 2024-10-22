@@ -1,4 +1,4 @@
-const book = require("../models/book");
+const Book = require("../models/book");
 const User = require("../models/user");
 
 const links = [
@@ -57,12 +57,37 @@ module.exports.logout = (req, res, next) => {
   });
 };
 
-// Show the user's profile
+/*// Show the user's profile
 module.exports.showProfile = async (req, res) => {
-  // The user object is attached to 'req.user' when authenticated
+  //The user object is attached to 'req.user' when authenticated
   const user = req.user;
   const books = await book.find({ user: user._id });
 
   // Render a rpfoile view and pass the user data to it
   res.render("users/profile", { user, books });
+}; */
+
+// Show a user's profile by their ID
+module.exports.showProfile = async (req, res) => {
+  try {
+    // Get the user ID from the route parameters
+    const userId = req.params.id;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    // If the user is not found, send a 404 response
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+
+    // Find books that belong to this user
+    const books = await Book.find({ user: user._id });
+
+    // Render the profile view, passing the user and their books
+    res.render("users/profile", { user, books });
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).send("Server error.");
+  }
 };
