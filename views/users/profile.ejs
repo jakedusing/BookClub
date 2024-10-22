@@ -1,2 +1,76 @@
 <% layout("layouts/boilerplate") %>
-<h1>Hey, <%= user.username %></h1>
+<h2><%= user.username %>'s Profile</h2>
+
+<!-- Display the user's books -->
+<h3>My Books:</h3>
+<div class="book-cards">
+  <% if (books.length > 0) { %> <% for (let book of books) { %>
+  <div
+    class="card mb-4 shadow-sm"
+    style="border: 1px solid #ddd; background-color: #fff; color: #333"
+  >
+    <div class="row g-0">
+      <!-- Book Image Section -->
+      <div
+        class="col-12 col-md-4 d-flex justify-content-center align-items-center"
+      >
+        <a href="/books/<%= book._id %>">
+          <img
+            class="img-fluid rounded-start"
+            src="<%= book.images[0].url %>"
+            alt="<%= book.title %>"
+            style="max-height: 250px; object-fit: cover; border-radius: 0.25rem"
+          />
+        </a>
+      </div>
+
+      <!-- Book Text Section -->
+      <div class="col-12 col-md-8">
+        <div class="card-body">
+          <!-- Book Title -->
+          <a href="/books/<%= book._id %>" style="text-decoration: none">
+            <h5
+              class="card-title"
+              style="
+                color: #007bff;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+              "
+            >
+              <%= book.title %>
+            </h5>
+          </a>
+
+          <!-- Book Description -->
+          <p
+            class="card-text"
+            style="color: #666; font-size: 1rem; margin-bottom: 15px"
+          >
+            <strong>Description:</strong> <%= book.description %>
+          </p>
+
+          <!-- Author Info -->
+          <p class="card-text" style="font-size: 0.9rem; color: #888">
+            <small><strong>Author:</strong> <%= book.author %></small>
+          </p>
+
+          <!-- Submitted by Info -->
+          <p class="card-text" style="font-size: 0.9rem; color: #888">
+            <small
+              ><strong>Submitted by:</strong> <%= book.user.username %></small
+            >
+          </p>
+
+          <!-- View Book Button -->
+          <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
+            View Book
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %> <% } else { %>
+  <p>You have not posted any books yet.</p>
+  <% } %>
+</div>
