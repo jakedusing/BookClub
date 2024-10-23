@@ -75,7 +75,10 @@
           <!-- Author Info -->
           <p class="card-text" style="font-size: 0.9rem; color: #888">
             <small
-              ><strong>Submitted by:</strong> <%= book.user.username %></small
+              ><strong>Submitted by:</strong
+              ><a href="/users/<%= book.user._id%>">
+                <%= book.user.username %></a
+              ></small
             >
           </p>
 
