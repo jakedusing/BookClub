@@ -20,12 +20,12 @@ body {
 /* Card Styles */
 .card {
   border-radius: 10px;
-  transition: transform 0.3s;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
@@ -36,7 +36,7 @@ body {
 }
 
 .card-title {
-  margin: 0;
+  margin: 0, 0, 0, 0.5;
 }
 
 /* Review Form Styles */
@@ -45,6 +45,7 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
 }
 
 /* Review Styles */
@@ -72,6 +73,10 @@ body {
 
 .btn-danger {
   background-color: #dc3545;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 .btn-danger:hover,

@@ -1,70 +1,60 @@
 <% layout("layouts/boilerplate") %>
-<h2><%= user.username %>'s Profile (<%= books.length %> books)</h2>
+<link rel="stylesheet" href="/stylesheets/profile.css" />
+<div class="container">
+  <h2><%= user.username %>'s Profile (<%= books.length %> books)</h2>
+  <% if (currentUser && currentUser.username === user.username) { %>
+  <!-- Greeting for the user if they are viewing their own profile -->
+  <div class="greeting">
+    <h3>
+      Hi, <%= currentUser.username %>!
+      <span role="img" aria-label="wave">👋</span>
+    </h3>
+    <p>You've uploaded <%= books.length %> books!</p>
+    <% } %>
+  </div>
 
-<!-- Greeting for the user if they are viewing their own profile -->
-<% if (currentUser && currentUser.username === user.username) { %>
-<h3>Hi, <%= currentUser.username %>!</h3>
-<% } %>
+  <!-- Display the user's books with conditional heading -->
+  <h3>
+    <% if (currentUser && currentUser.username === user.username) { %> My Books:
+    <% } else { %> <%= user.username %>'s Books: <% } %>
+  </h3>
 
-<!-- Display the user's books with conditional heading -->
-<h3>
-  <% if (currentUser && currentUser.username === user.username) { %> My Books:
-  <% } else { %> <%= user.username %>'s Books: <% } %>
-</h3>
-
-<!-- Display the user's books -->
-<div class="row">
-  <% if (books.length > 0) { %> <% for (let book of books) { %>
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div
-      class="card shadow-sm"
-      style="border: 1px solid #ddd; background-color: #fff; color: #333"
-    >
-      <div class="row g-0">
-        <!-- Book Image Section -->
-        <div class="col-12 d-flex justify-content-center align-items-center">
-          <a href="/books/<%= book._id %>">
-            <img
-              class="img-fluid rounded-start"
-              src="<%= book.images[0].url %>"
-              alt="<%= book.title %>"
-              style="
-                max-height: 250px;
-                object-fit: cover;
-                border-radius: 0.25rem;
-              "
-            />
-          </a>
-        </div>
-
-        <!-- Book Text Section -->
-        <div class="col-12">
-          <div class="card-body">
-            <!-- Book Title -->
-            <a href="/books/<%= book._id %>" style="text-decoration: none">
-              <h5
-                class="card-title"
-                style="
-                  color: #007bff;
-                  font-size: 1.5rem;
-                  font-weight: bold;
-                  margin-bottom: 10px;
-                "
-              >
-                <%= book.title %>
-              </h5>
+  <!-- Display the user's books -->
+  <div class="row">
+    <% if (books.length > 0) { %> <% for (let book of books) { %>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card shadow-sm">
+        <div class="row g-0">
+          <!-- Book Image Section -->
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <a href="/books/<%= book._id %>">
+              <img
+                class="img-fluid rounded-start"
+                src="<%= book.images[0].url %>"
+                alt="<%= book.title %>"
+              />
             </a>
+          </div>
 
-            <!-- View Book Button -->
-            <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
-              View Book
-            </a>
+          <!-- Book Text Section -->
+          <div class="col-12">
+            <div class="card-body">
+              <!-- Book Title -->
+              <a href="/books/<%= book._id %>" style="text-decoration: none">
+                <h5 class="card-title"><%= book.title %></h5>
+              </a>
+
+              <!-- View Book Button -->
+              <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
+                View Book
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <% } %> <% } else { %>
+    <p>You have not posted any books yet.</p>
+    <% } %>
   </div>
-  <% } %> <% } else { %>
-  <p>You have not posted any books yet.</p>
-  <% } %>
 </div>

@@ -1,0 +1,74 @@
+/* General Styles */
+body {
+  background-color: #f9f9f9; /* Light background for contrast */
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Profile Heading Styles */
+h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2rem; /* Larger size for prominence */
+}
+
+h3 {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.greeting {
+  background: linear-gradient(to right, #a4c8e1, #6a99b8);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 2px solid #d1e8f0;
+}
+
+.greeting h3 {
+  font-size: 2rem;
+  font-family: "Arial Black", sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.greeting p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #555;
+  font-style: italic;
+}
+
+/* Card Styles */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Book Image Styles */
+.card img {
+  border-top-left-radius: 10px; /* Rounded top corners */
+  border-top-right-radius: 10px;
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 5px; /* Slightly rounded buttons */
+}
+
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}

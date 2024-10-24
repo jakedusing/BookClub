@@ -41,8 +41,8 @@
         <p class="card-text"><%= book.description %></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= book.author %></li>
-        <li class="list-group-item"><%= book.user.username %></li>
+        <li class="list-group-item"><small><strong>Author:</strong> <%= book.author %></small></li>
+        <li class="list-group-item"><small><strong>Submitted by:</strong> <a href="/users/<%= book.user._id%>"><%= book.user.username %></a></small></li>
       </ul>
       <% if(currentUser && book.user.equals(currentUser._id)) {%>
       <div class="card-body">
