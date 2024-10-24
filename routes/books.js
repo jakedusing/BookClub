@@ -21,6 +21,24 @@ router
 
 router.get("/new", isLoggedIn, books.renderNewForm);
 
+router.get(
+  "/search",
+  catchAsync(async (req, res) => {
+    const query = req.query.q; // Get the search query from the URL
+    let results = [];
+
+    console.log("search query receieved:", query);
+
+    if (query) {
+      // use a case-insensitive regex search on the title
+      results = await Book.find({ title: new RegExp(query, "i") }); // search the book collection, the "i" is for case-insensitive
+      console.log("Search results found:", results);
+    }
+
+    res.render("books/searchResults", { results, query }); // Render results in a new view
+  })
+);
+
 router
   .route("/:id")
   .get(catchAsync(books.showBook))

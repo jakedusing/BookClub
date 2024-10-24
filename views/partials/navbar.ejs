@@ -19,6 +19,15 @@
         <a class="nav-link" href="/books/new">New Book</a>
       </div>
       <div class="navbar-nav ms-auto">
+        <form action="/books/search" method="GET">
+          <input
+            type="text"
+            name="q"
+            placeholder="Search for books..."
+            required
+          />
+          <button type="submit">Search</button>
+        </form>
         <% if(!currentUser) { %>
         <a href="/login" class="nav-link">Login</a>
         <a href="/register" class="nav-link">Register</a>
