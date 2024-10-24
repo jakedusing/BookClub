@@ -1,8 +1,18 @@
 <% layout("layouts/boilerplate") %>
 <h2><%= user.username %>'s Profile (<%= books.length %> books)</h2>
 
+<!-- Greeting for the user if they are viewing their own profile -->
+<% if (currentUser && currentUser.username === user.username) { %>
+<h3>Hi, <%= currentUser.username %>!</h3>
+<% } %>
+
+<!-- Display the user's books with conditional heading -->
+<h3>
+  <% if (currentUser && currentUser.username === user.username) { %> My Books:
+  <% } else { %> <%= user.username %>'s Books: <% } %>
+</h3>
+
 <!-- Display the user's books -->
-<h3>My Books:</h3>
 <div class="row">
   <% if (books.length > 0) { %> <% for (let book of books) { %>
   <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
