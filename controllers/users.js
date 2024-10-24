@@ -1,22 +1,10 @@
 const Book = require("../models/book");
 const User = require("../models/user");
-
-const links = [
-  "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1533669955142-6a73332af4db?q=80&w=1948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1475243907012-e01b4e4b0a1b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1414124488080-0188dcbb8834?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-];
-
-function getRandomLink() {
-  const randomIndex = Math.floor(Math.random() * links.length);
-  return links[randomIndex];
-}
+const getRandomGreeting = require("../utils/greetings.js");
+const getRandomImage = require("../utils/randomImage.js");
 
 module.exports.renderRegister = (req, res) => {
-  const randomLink = getRandomLink();
-  res.render("users/register", { randomLink });
+  res.render("users/register", { getRandomImage });
 };
 
 module.exports.register = async (req, res) => {
@@ -36,8 +24,7 @@ module.exports.register = async (req, res) => {
 };
 
 module.exports.renderLogin = (req, res) => {
-  const randomLink = getRandomLink();
-  res.render("users/login", { randomLink });
+  res.render("users/login", { getRandomImage });
 };
 
 module.exports.login = (req, res) => {
@@ -85,7 +72,7 @@ module.exports.showProfile = async (req, res) => {
     const books = await Book.find({ user: user._id });
 
     // Render the profile view, passing the user and their books
-    res.render("users/profile", { user, books });
+    res.render("users/profile", { user, books, getRandomGreeting });
   } catch (error) {
     console.error(error); // Log the error for debugging
     res.status(500).send("Server error.");

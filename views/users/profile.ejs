@@ -6,7 +6,7 @@
   <!-- Greeting for the user if they are viewing their own profile -->
   <div class="greeting">
     <h3>
-      Hi, <%= currentUser.username %>!
+      <%= getRandomGreeting() %>, <%= currentUser.username %>!
       <span role="img" aria-label="wave">👋</span>
     </h3>
     <p>You've uploaded <%= books.length %> books!</p>
