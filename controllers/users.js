@@ -44,16 +44,6 @@ module.exports.logout = (req, res, next) => {
   });
 };
 
-/*// Show the user's profile
-module.exports.showProfile = async (req, res) => {
-  //The user object is attached to 'req.user' when authenticated
-  const user = req.user;
-  const books = await book.find({ user: user._id });
-
-  // Render a rpfoile view and pass the user data to it
-  res.render("users/profile", { user, books });
-}; */
-
 // Show a user's profile by their ID
 module.exports.showProfile = async (req, res) => {
   try {
