@@ -16,8 +16,6 @@ const BookSchema = new Schema({
   images: [ImageSchema],
   author: String,
   description: String,
-  pages: String,
-  realeaseDate: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -28,6 +26,8 @@ const BookSchema = new Schema({
       ref: "Review",
     },
   ],
+  pages: Number,
+  releaseDate: Number,
 });
 
 BookSchema.post("findOneAndDelete", async function (doc) {

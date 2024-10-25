@@ -36,6 +36,8 @@
       <!-- Author and Submitted By Information -->
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><small><strong>Author:</strong> <%= book.author %></small></li>
+        <li class="list-group-item"><small><strong>Pages:</strong> <%= book.pages %></small></li>
+        <li class="list-group-item"><small><strong>Release Date:</strong> <%= book.releaseDate %></small></li>
         <li class="list-group-item"><small><strong>Submitted by:</strong> <a href="/users/<%= book.user._id %>"><%= book.user.username %></a></small></li>
       </ul>
       <!-- Edit/Delete Buttons for Current User -->

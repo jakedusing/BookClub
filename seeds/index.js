@@ -20,6 +20,10 @@ const seedDB = async () => {
     // Generate a random index between 0 and 59 (inclusive) to select a book seed
     const random60 = Math.floor(Math.random() * 60);
 
+    // Generate random values for pages and releaseDate
+    const pages = Math.floor(Math.random() * (401 - 100)) + 100; // Random pages between 100 and 400
+    const releaseDate = Math.floor(Math.random() * (2025 - 1800)) + 1800; // 1800 to 2024
+
     // Create a new book instance with random data from bookSeeds
     const book = new Book({
       // Set the book title from the randomly selected seed
@@ -30,6 +34,10 @@ const seedDB = async () => {
       user: "6701ef401799716b86f31afa",
       // Set the book description from the randomly selected seed
       description: bookSeeds[random60].description,
+      //  set the random pages
+      pages: pages,
+      // set the random release date
+      releaseDate: releaseDate,
       // Set an array of images for the book
       images: [
         {

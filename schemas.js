@@ -30,8 +30,8 @@ module.exports.bookSchema = Joi.object({
     author: Joi.string().required().escapeHTML(),
     // image: Joi.string().required(),
     description: Joi.string().required().escapeHTML(),
-    pages: Joi.string().optional().escapeHTML(),
-    releaseDate: Joi.string().optional().escapeHTML(),
+    pages: Joi.number().optional().min(0),
+    date: Joi.number().optional().min(0),
   }).required(),
   deleteImages: Joi.array(),
 });
