@@ -36,11 +36,15 @@
 }
 
 .card-title {
-  color: #007bff;
+  color: #666;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
   text-decoration: none; /* Remove underline */
+}
+
+.card-title:hover {
+  color: #333;
 }
 
 .card-text {
