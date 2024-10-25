@@ -16,7 +16,6 @@ module.exports.createBook = async (req, res, next) => {
   book.user = req.user._id;
   //console.log(req.user._id);
   await book.save();
-  console.log(book);
   req.flash("success", "Successfully added a new book!");
   res.redirect(`/books/${book._id}`);
 };
@@ -48,7 +47,6 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateBook = async (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
   const book = await Book.findByIdAndUpdate(id, { ...req.body.book });
   const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   book.images.push(...imgs);
@@ -60,7 +58,7 @@ module.exports.updateBook = async (req, res) => {
     await book.updateOne({
       $pull: { images: { filename: { $in: req.body.deleteImages } } },
     });
-    console.log(book);
+    //  console.log(book);
   }
   req.flash("success", "Successfully updated book");
   res.redirect(`/books/${book._id}`);
