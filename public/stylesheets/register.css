@@ -1,0 +1,54 @@
+.register-container {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.register-card {
+  border: none;
+  border-radius: 8px;
+}
+
+.card-title {
+  margin-bottom: 30px; /* Space under the "Login" title */
+  text-align: center; /* Center title */
+}
+
+.card-img-top {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.login-section {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  text-align: center;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+}
+
+input {
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transition: background-color 0.3s;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+}

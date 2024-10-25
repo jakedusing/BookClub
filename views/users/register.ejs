@@ -1,9 +1,12 @@
 <% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/register.css" />
 
-<div class="container d-flex justify-content-center align-items-center mt-5">
+<div
+  class="register-container container d-flex justify-content-center align-items-center"
+>
   <div class="row flex-fill">
     <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-      <div class="card shadow">
+      <div class="register-card card shadow">
         <img src="<%= getRandomImage() %>" alt="" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">Register</h5>
@@ -46,6 +49,10 @@
             </div>
             <button class="btn btn-success w-100">Register</button>
           </form>
+          <div class="login-section">
+            <p>Already have an account?</p>
+            <a href="/login" class="btn btn-success w-100">Login</a>
+          </div>
         </div>
       </div>
     </div>
