@@ -9,6 +9,15 @@ body {
   margin: 0;
 }
 
+.alert {
+  padding: 15px;
+  border: 1px solid #ffc107;
+  border-radius: 5px;
+  background-color: #fff3cd;
+  color: #856404;
+  margin-bottom: 20px;
+}
+
 /* Carousel Styles */
 .carousel-item img {
   max-width: 80%; /* Set the max width to 80% of the container */
@@ -38,14 +47,20 @@ body {
 .card-title {
   margin: 0, 0, 0, 0.5rem;
   color: #282f44;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 4px;
 }
 
-.card-title a {
-  color: inherit; /*Make link color inherit from card title*/
-}
-
-.card-title a:hover {
-  color: #e9edc9;
+.card-title::after {
+  content: ""; /* create a pseudo-element*/
+  display: block; /* make it a block element */
+  height: 2px; /* thickness of the underline */
+  background-color: #6d3b47;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0; /* align to the bottom of the title*/
 }
 
 /* Review Form Styles */

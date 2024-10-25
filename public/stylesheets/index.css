@@ -67,7 +67,7 @@
 .card img {
   max-height: 250px;
   object-fit: cover;
-  border-radius: 0.25rem; /* Rounded corners for images */
+  border-radius: 0.5rem; /* Rounded corners for images */
   padding: 5px 0;
 }
 
