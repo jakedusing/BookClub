@@ -45,6 +45,28 @@
 <%= book.description %>
             </textarea>
           </div>
+          <div class="mb-3">
+            <label class="form-label" for="pages">Pages</label>
+            <input
+              class="form-control"
+              type="number"
+              id="pages"
+              name="book[pages]"
+              value="<%= book.pages %>"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="releaseDate">Release Date</label>
+            <input
+              class="form-control"
+              type="number"
+              id="releaseDate"
+              name="book[releaseDate]"
+              value="<%= book.releaseDate %>"
+              required
+            />
+          </div>
           <div class="mt-3 mb-5 custom-file">
             <label for="image" class="form-label">Add More Images</label>
             <input
