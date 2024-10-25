@@ -1,31 +1,21 @@
-<% layout("layouts/boilerplate")%>
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/index.css" />
 
 <!-- Page Content -->
-<div
-  class="container"
-  style="background-color: #f5f5f5; color: #333; border-radius: 0.35rem"
->
+<div class="container">
   <!-- Heading and Intro Section -->
   <div class="text-center mb-5">
-    <h1 class="display-4 text-dark">BookClub</h1>
-    <p class="lead text-muted">
+    <h1 class="display-4">BookClub</h1>
+    <p class="lead">
       Explore our collection of books, add your own, and dive into the reviews
       from fellow readers.
     </p>
-    <a
-      href="/books/new"
-      class="btn btn-lg"
-      style="background-color: #007bff; color: white; border-color: #007bff"
-      >Add a Book</a
-    >
+    <a href="/books/new" class="btn btn-lg">Add a Book</a>
   </div>
 
   <!-- Book Cards Section -->
   <% for (let book of books) { %>
-  <div
-    class="card mb-4 shadow-sm"
-    style="border: 1px solid #ddd; background-color: #fff; color: #333"
-  >
+  <div class="card mb-4 shadow-sm">
     <div class="row g-0">
       <!-- Book Image Section -->
       <div
@@ -36,7 +26,6 @@
             class="img-fluid rounded-start"
             src="<%= book.images[0].url %>"
             alt="<%= book.title %>"
-            style="max-height: 250px; object-fit: cover; border-radius: 0.25rem"
           />
         </a>
       </div>
@@ -46,46 +35,33 @@
         <div class="card-body">
           <!-- Book Title -->
           <a href="/books/<%= book._id %>" style="text-decoration: none">
-            <h5
-              class="card-title"
-              style="
-                color: #007bff;
-                font-size: 1.5rem;
-                font-weight: bold;
-                margin-bottom: 10px;
-              "
-            >
-              <%= book.title %>
-            </h5>
+            <h5 class="card-title"><%= book.title %></h5>
           </a>
 
           <!-- Book Description -->
-          <p
-            class="card-text"
-            style="color: #666; font-size: 1rem; margin-bottom: 15px"
-          >
+          <p class="card-text">
             <strong>Description:</strong> <%= book.description %>
           </p>
 
           <!-- Author Info -->
-          <p class="card-text" style="font-size: 0.9rem; color: #888">
+          <p class="card-text">
             <small><strong>Author:</strong> <%= book.author %></small>
           </p>
 
-          <!-- Author Info -->
-          <p class="card-text" style="font-size: 0.9rem; color: #888">
+          <!-- Submitted by Info -->
+          <p class="card-text">
             <small
-              ><strong>Submitted by:</strong
-              ><a href="/users/<%= book.user._id%>">
-                <%= book.user.username %></a
+              ><strong>Submitted by:</strong>
+              <a href="/users/<%= book.user._id %>"
+                ><%= book.user.username %></a
               ></small
             >
           </p>
 
           <!-- View Book Button -->
-          <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
-            View Book
-          </a>
+          <a href="/books/<%= book._id %>" class="btn btn-outline-primary"
+            >View Book</a
+          >
         </div>
       </div>
     </div>

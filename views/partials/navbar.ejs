@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/stylesheets/navbar.css" />
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">BookClub</a>
@@ -19,15 +20,18 @@
         <a class="nav-link" href="/books/new">New Book</a>
       </div>
       <div class="navbar-nav ms-auto">
-        <form action="/books/search" method="GET">
-          <input
-            type="text"
-            name="q"
-            placeholder="Search for books..."
-            required
-          />
-          <button type="submit">Search</button>
-        </form>
+        <div class="form-inline">
+          <form action="/books/search" method="GET">
+            <input
+              type="text"
+              name="q"
+              placeholder="Search for books..."
+              required
+              aria-label="Search for books"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
         <% if(!currentUser) { %>
         <a href="/login" class="nav-link">Login</a>
         <a href="/register" class="nav-link">Register</a>
