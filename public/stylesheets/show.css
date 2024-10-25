@@ -29,14 +29,23 @@ body {
 }
 
 .card-header {
-  background-color: #007bff;
-  color: white;
+  background-color: #191d32;
+  color: #e9edc9;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .card-title {
-  margin: 0, 0, 0, 0.5;
+  margin: 0, 0, 0, 0.5rem;
+  color: #282f44;
+}
+
+.card-title a {
+  color: inherit; /*Make link color inherit from card title*/
+}
+
+.card-title a:hover {
+  color: #e9edc9;
 }
 
 /* Review Form Styles */
@@ -63,8 +72,13 @@ body {
   border-radius: 5px;
 }
 
-.btn-info {
-  background-color: #17a2b8;
+.btn-edit {
+  background-color: #453a49;
+  color: #e9edc9;
+}
+
+.btn-edit:hover {
+  background-color: #6d3b47;
 }
 
 .btn-success {

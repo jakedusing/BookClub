@@ -1,17 +1,29 @@
-<% layout("layouts/boilerplate")%>
-<h1>Search Results for "<%= query %>"</h1>
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/search.css" />
 
-<% if (results.length > 0) { %>
-<ul>
-  <% results.forEach(book => { %>
-  <li>
-    <strong><%= book.title %></strong><br />
-    <em><%= book.author %></em>
-    <!-- Adjust this according to your model -->
-    <a href="/books/<%= book._id %>">View Details</a>
-  </li>
-  <% }) %>
-</ul>
-<% } else { %>
-<p>No results found.</p>
-<% } %>
+<div class="container">
+  <h1 class="text-center">Search Results for "<%= query %>"</h1>
+
+  <% if (results.length > 0) { %>
+  <div class="row">
+    <% results.forEach(book => { %>
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <img
+          src="<%= book.images[0].url %>"
+          class="card-img-top"
+          alt="<%= book.title %>"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
+          <a href="/books/<%= book._id %>" class="btn btn-view">View Details</a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% } else { %>
+  <p class="text-center">No results found.</p>
+  <% } %>
+</div>

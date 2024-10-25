@@ -1,42 +1,43 @@
 /* index.css */
 
 .container {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #191d32;
+  color: #fff;
   border-radius: 0.35rem;
 }
 
 .text-center .display-4 {
-  color: #343a40; /* Dark text for heading */
+  color: #6d3b47; /* crimson */
 }
 
 .text-center .lead {
-  color: #6c757d; /* Muted text color */
+  color: #e9edc9; /* light Muted text color */
 }
 
 .btn-lg {
-  background: linear-gradient(to bottom, #343a40, #2c3035);
-  color: #f2fbff;
+  background-color: #6d3b47; /* crimson */
+  color: #fff;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .btn-lg:hover {
-  background: linear-gradient(to bottom, #23272b, #343a40);
-  color: #f2fbff;
+  background-color: #453a49;
+  color: #fff;
+  transform: scale(1.05);
 }
 
 .card {
-  border: 1px solid #ddd;
-  background-color: #fff;
-  color: #333;
+  border: 1px solid #282f44;
+  background-color: #282f44;
+  color: #fff;
 }
 
 .card-title {
-  color: #666;
+  color: #6d3b47;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
@@ -44,22 +45,41 @@
 }
 
 .card-title:hover {
-  color: #333;
+  color: #e9edc9;
 }
 
 .card-text {
-  color: #666;
+  color: #e9edc9;
   font-size: 1rem;
   margin-bottom: 15px;
 }
 
 .card-text small {
   font-size: 0.9rem;
-  color: #888;
+  color: #e9edc9;
+}
+
+.card-text small {
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
 .card img {
   max-height: 250px;
   object-fit: cover;
   border-radius: 0.25rem; /* Rounded corners for images */
+  padding: 5px 0;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #6d3b47;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn-outline-primary:hover {
+  background-color: #453a49;
+  color: #fff;
+  border-color: #453a49;
 }
