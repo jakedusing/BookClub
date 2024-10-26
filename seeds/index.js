@@ -42,15 +42,15 @@ const seedDB = async () => {
       images: [
         {
           // URL of the first image
-          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729178695/BookClub/gwxftzzdflp4snisxxsy.png",
+          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729079615/BookClub/hgpzgkeoyo4ksopkgmtw.png",
           // Filename for the first image (used for referencing in Cloudinary)
-          filename: "BookClub/gwxftzzdflp4snisxxsy",
+          filename: "BookClub/hgpzgkeoyo4ksopkgmtw",
         },
         {
           // URL of the second image
-          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729178695/BookClub/eh1kk7agcjawvravv13c.jpg",
+          url: "https://res.cloudinary.com/dhrx7lpij/image/upload/v1729079096/BookClub/ib9ibxkz5upkdk7c9110.jpg",
           // Filename for the second image
-          filename: "BookClub/eh1kk7agcjawvravv13c",
+          filename: "BookClub/ib9ibxkz5upkdk7c9110",
         },
       ],
     });

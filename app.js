@@ -73,6 +73,7 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+  "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css",
 ];
 const connectSrcUrls = [];
 const fontSrcUrls = [];
@@ -92,7 +93,11 @@ app.use(
         "https://res.cloudinary.com/dhrx7lpij/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
         "https://images.unsplash.com/",
       ],
-      fontSrc: ["'self'", ...fontSrcUrls],
+      fontSrc: [
+        "'self'",
+        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/fonts/",
+        ...fontSrcUrls,
+      ],
     },
   })
 );

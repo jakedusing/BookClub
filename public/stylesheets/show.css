@@ -84,7 +84,35 @@ body {
 
 /* Button Styles */
 .btn {
+  padding: 8px 12px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
   border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-login {
+  background-color: #ffc107;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+.btn-register {
+  background-color: #28a745;
+  color: #fff;
+  border: 1px solid #28a745;
+}
+
+.btn-login:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+.btn-register:hover {
+  background-color: #218838;
+  border-color: #218838;
 }
 
 .btn-edit {

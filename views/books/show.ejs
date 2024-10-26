@@ -43,7 +43,7 @@
       <!-- Edit/Delete Buttons for Current User -->
       <% if(currentUser && book.user.equals(currentUser._id)) { %>
       <div class="card-body">
-        <a class="card-link btn btn-edit" href="/books/<%=book._id%>/edit">Edit</a>
+        <a class="card-link btn btn-edit" href="/books/<%=book._id%>/edit"><i class="bi bi-pencil"></i> Edit</a>
         <form class="d-inline" action="/books/<%=book._id%>?_method=DELETE" method="POST">
           <button class="btn btn-danger">Delete</button>
         </form>
@@ -83,7 +83,7 @@
       <!-- Alert for Users Not Logged In -->
       <div class="alert alert-login alert-warning">
         <h2>Please Log In to Leave a Review</h2>
-        <p>You need to be logged in to submit a review. Please <a href="/login">log in</a> or <a href="/register">register</a>.</p>
+        <p>You need to be logged in to submit a review. Please <a href="/login" class="btn btn-login">log in</a> or <a href="/register" class="btn btn-register">register</a>.</p>
       </div>
       <% } %>
 
