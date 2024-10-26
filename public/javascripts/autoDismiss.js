@@ -1,15 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const successAlert = document.getElementById("successAlert");
+  const errorAlert = document.getElementById("errorAlert");
 
-  if (successAlert) {
-    // Automatically dismiss the alert after 1 second
-    setTimeout(() => {
-      const alertInstance = bootstrap.Alert.getInstance(successAlert);
-      if (alertInstance) {
-        alertInstance.close();
-      } else {
-        new bootstrap.Alert(successAlert).close();
-      }
-    }, 1500); // 1500 milliseconds = 1.5 second
-  }
+  const dismissAlert = (alertElement) => {
+    if (alertElement) {
+      setTimeout(() => {
+        const alertInstance = bootstrap.Alert.getInstance(alertElement);
+        if (alertInstance) {
+          alertInstance.close();
+        } else {
+          new bootstrap.Alert(alertElement).close();
+        }
+      }, 1500);
+    }
+  };
+
+  dismissAlert(successAlert);
+  dismissAlert(errorAlert);
 });

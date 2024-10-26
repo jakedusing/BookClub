@@ -2,7 +2,12 @@ const express = require("express");
 const router = express.Router();
 const books = require("../controllers/books");
 const catchAsync = require("../utils/catchAsync");
-const { isLoggedIn, isUser, validateBook } = require("../middleware");
+const {
+  isLoggedIn,
+  isUser,
+  validateBook,
+  isValidObjectId,
+} = require("../middleware");
 const multer = require("multer");
 const { storage } = require("../cloudinary");
 const upload = multer({ storage });
@@ -51,6 +56,12 @@ router
   )
   .delete(isLoggedIn, isUser, catchAsync(books.deleteBook));
 
-router.get("/:id/edit", isLoggedIn, isUser, catchAsync(books.renderEditForm));
+router.get(
+  "/:id/edit",
+  isValidObjectId,
+  isLoggedIn,
+  isUser,
+  catchAsync(books.renderEditForm)
+);
 
 module.exports = router;

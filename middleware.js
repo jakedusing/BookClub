@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const { bookSchema, reviewSchema } = require("./schemas");
 const ExpressError = require("./utils/ExpressError");
 const Book = require("./models/book");
@@ -57,4 +58,13 @@ module.exports.validateReview = (req, res, next) => {
   } else {
     next();
   }
+};
+
+module.exports.isValidObjectId = (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    req.flash("error", "Invalid ID format.");
+    return res.redirect("/books");
+  }
+  next();
 };

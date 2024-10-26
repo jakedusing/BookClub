@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Book = require("../models/book");
 const { cloudinary } = require("../cloudinary");
 
@@ -21,6 +22,13 @@ module.exports.createBook = async (req, res, next) => {
 };
 
 module.exports.showBook = async (req, res) => {
+  const { id } = req.params;
+
+  //check if the ID is a valid ObjectID
+  if (!mongoose.isValidObjectId(id)) {
+    req.flash("error", "Invalid book ID!");
+    return res.redirect("/books");
+  }
   const book = await Book.findById(req.params.id)
     .populate({
       path: "reviews",
@@ -37,12 +45,26 @@ module.exports.showBook = async (req, res) => {
 };
 
 module.exports.renderEditForm = async (req, res) => {
-  const book = await Book.findById(req.params.id);
-  if (!book) {
-    req.flash("error", "Cannot find that book!");
+  const { id } = req.params;
+
+  // Check if the ID is a valid ObjectId (24 characters and hex)
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    req.flash("error", "Invalid book ID!");
     return res.redirect("/books");
   }
-  res.render("books/edit", { book });
+
+  try {
+    const book = await Book.findById(id);
+    if (!book) {
+      req.flash("error", "Cannot find that book!");
+      return res.redirect("/books");
+    }
+    res.render("books/edit", { book });
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "An error occurred while retrieving the book.");
+    res.redirect("/books");
+  }
 };
 
 module.exports.updateBook = async (req, res) => {
