@@ -10,17 +10,28 @@
       <span role="img" aria-label="wave">👋</span>
     </h3>
     <p>You've uploaded <%= books.length %> books!</p>
-    <form
-      action="/upload-profile-picture"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <input type="file" name="profileImage" accept="image/*" required />
-      <button type="submit">Upload</button>
-    </form>
-    <% if (user.profileImage) { %>
-    <img src="<%= user.profileImage.url %>" alt="Profile Picture" />
-    <% } %> <% } %>
+    <div class="profile-container">
+      <% if (user.profileImage) { %>
+      <div class="profile-image-container">
+        <img
+          src="<%= user.profileImage.url %>"
+          alt="Profile Picture"
+          class="profile-image"
+        />
+      </div>
+      <% } %>
+
+      <form
+        action="/upload-profile-picture"
+        method="POST"
+        enctype="multipart/form-data"
+        class="profile-upload-form"
+      >
+        <input type="file" name="profileImage" accept="image/*" required />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+    <% } %>
   </div>
 
   <!-- Display the user's books with conditional heading -->

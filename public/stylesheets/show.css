@@ -44,7 +44,7 @@ body {
   border-top-right-radius: 10px;
 }
 
-.card-title {
+.card-title-book {
   margin: 0, 0, 0, 0.5rem;
   color: #282f44;
   font-weight: bold;
@@ -52,7 +52,7 @@ body {
   padding-bottom: 4px;
 }
 
-.card-title::after {
+.card-title-book::after {
   content: ""; /* create a pseudo-element*/
   display: block; /* make it a block element */
   height: 2px; /* thickness of the underline */
@@ -80,6 +80,27 @@ body {
 
 .card-title {
   font-weight: bold;
+}
+
+.d-flex-reviewer {
+  display: flex;
+  align-items: center; /* Aligns items vertically center */
+}
+
+.review-profile-image-container {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 50%; /* Create a circular shape */
+  border: 2px solid #ddd; /* Optional: border for visibility */
+  background-color: #f0f0f0; /* Optional: background color */
+  margin-right: 10px; /* Space between image and text */
+}
+
+.review-profile-image {
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure it's a block element */
 }
 
 /* Button Styles */
