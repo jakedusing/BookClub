@@ -42,7 +42,9 @@ router.post(
 
       // if the user already has a profile image, delete it from cloudinary
       if (user.profileImage && user.profileImage.filename) {
-        await cloudinary.uploader.destroy(user.profileImage.filename); // Delete the old profile image
+        await cloudinary.uploader.destroy(user.profileImage.filename, {
+          invalidate: true,
+        }); // Delete the old profile image, invalidate should deal with cloudinary image cache and getting rid of it
       }
 
       // upload the new image to CLoudinary

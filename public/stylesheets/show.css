@@ -20,7 +20,7 @@ body {
 
 /* Carousel Styles */
 .carousel-item img {
-  max-width: 80%; /* Set the max width to 80% of the container */
+  max-width: 60%; /* Set the max width to 80% of the container */
   height: auto; /* Maintain the aspect ratio */
   margin: 0 auto; /* Center the image */
   display: block; /* Ensure it behaves as a block element */
@@ -88,8 +88,8 @@ body {
 }
 
 .review-profile-image-container {
-  width: 40px; /* Adjust size as needed */
-  height: 40px; /* Adjust size as needed */
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
   overflow: hidden; /* Hide overflow */
   border-radius: 50%; /* Create a circular shape */
   border: 2px solid #ddd; /* Optional: border for visibility */
