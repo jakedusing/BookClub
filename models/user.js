@@ -18,6 +18,7 @@ const UserSchema = new Schema({
     unique: true,
   },
   profileImage: ImageSchema,
+  bio: String,
 });
 
 UserSchema.plugin(passportLocalMongoose);

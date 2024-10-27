@@ -67,6 +67,28 @@ router.post(
   }
 );
 
+// Update User Bio Route
+router.post(
+  "/users/:id/update-bio",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const { bio } = req.body;
+    const user = await User.findById(id);
+
+    // Check if the user is allowed to update their own bio
+    if (!user || user._id.toString() !== req.user._id.toString()) {
+      req.flash("error", "You are not authorized to update this bio.");
+      return res.redirect(`/users/${req.user._id}`);
+    }
+
+    user.bio = bio; // Update the bio
+    await user.save();
+    req.flash("success", "Bio updated successfully!");
+    res.redirect(`/users/${user._id}`);
+  })
+);
+
 // Show user profile route
 router.get("/users/:id", isLoggedIn, catchAsync(users.showProfile));
 

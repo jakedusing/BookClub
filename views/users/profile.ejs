@@ -1,52 +1,65 @@
 <% layout("layouts/boilerplate") %>
 <link rel="stylesheet" href="/stylesheets/profile.css" />
 <div class="container">
-  <!--<h2><%= user.username %>'s Profile (<%= books.length %> books)</h2>
-  <% if (currentUser && currentUser.username === user.username) { %>
-  <!-- Greeting for the user if they are viewing their own profile -->
-  <div class="greeting">
-    <h3>
-      <%= getRandomGreeting() %>, <%= currentUser.username %>!
-      <span role="img" aria-label="wave">👋</span>
-    </h3>
-    <p>You've uploaded <%= books.length %> books!</p>
-    <div class="profile-container">
-      <% if (user.profileImage) { %>
-      <div class="profile-image-container">
-        <img
-          src="<%= user.profileImage.url %>"
-          alt="Profile Picture"
-          class="profile-image"
-        />
-      </div>
-      <% } %>
+  <!--<h2><%= user.username %>'s Profile (<%= books.length %> books)</h2> -->
 
-      <form
-        action="/upload-profile-picture"
-        method="POST"
-        enctype="multipart/form-data"
-        class="profile-upload-form"
-      >
-        <input type="file" name="profileImage" accept="image/*" required />
-        <button type="submit">Upload</button>
-      </form>
+  <div class="profile-header">
+    <% if (user.profileImage) { %>
+    <div class="profile-image-container">
+      <img
+        src="<%= user.profileImage.url %>"
+        alt="Profile Picture"
+        class="profile-image"
+      />
     </div>
     <% } %>
+
+    <div class="profile-info">
+      <% if (currentUser && currentUser.username === user.username) { %>
+      <div class="greeting">
+        <h3>
+          <%= getRandomGreeting() %>, <%= currentUser.username %>!
+          <span role="img" aria-label="wave">👋</span>
+        </h3>
+        <p>You've uploaded <%= books.length %> books!</p>
+        <form
+          action="/upload-profile-picture"
+          method="POST"
+          enctype="multipart/form-data"
+          class="profile-upload-form"
+        >
+          <input type="file" name="profileImage" accept="image/*" required />
+          <button type="submit">Upload Profile Picture</button>
+        </form>
+        <!-- Bio Update Form -->
+        <form
+          action="/users/<%= user._id %>/update-bio"
+          method="POST"
+          class="bio-update-form"
+        >
+          <textarea name="bio" placeholder="Write your bio here..." rows="4">
+<%= user.bio || "" %></textarea
+          >
+          <button type="submit">Update Bio</button>
+        </form>
+      </div>
+      <% } else { %>
+      <h3><%= user.username %></h3>
+      <p><%= user.bio || "This user has not set a bio." %></p>
+      <% } %>
+    </div>
   </div>
 
-  <!-- Display the user's books with conditional heading -->
   <h3>
     <% if (currentUser && currentUser.username === user.username) { %> My Books:
-    <% } else { %> <%= user.username %>'s Books: <% } %>
+    <% } else { %> Books: <% } %>
   </h3>
 
-  <!-- Display the user's books -->
   <div class="row">
     <% if (books.length > 0) { %> <% for (let book of books) { %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
       <div class="card">
         <div class="row g-0">
-          <!-- Book Image Section -->
           <div class="col-12 d-flex justify-content-center align-items-center">
             <a href="/books/<%= book._id %>">
               <img
@@ -56,19 +69,14 @@
               />
             </a>
           </div>
-
-          <!-- Book Text Section -->
           <div class="col-12">
             <div class="card-body">
-              <!-- Book Title -->
               <a href="/books/<%= book._id %>" style="text-decoration: none">
                 <h5 class="card-title"><%= book.title %></h5>
               </a>
-
-              <!-- View Book Button -->
-              <a href="/books/<%= book._id %>" class="btn btn-outline-primary">
-                View Book
-              </a>
+              <a href="/books/<%= book._id %>" class="btn btn-outline-primary"
+                >View Book</a
+              >
             </div>
           </div>
         </div>
