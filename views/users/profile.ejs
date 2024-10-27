@@ -10,7 +10,17 @@
       <span role="img" aria-label="wave">👋</span>
     </h3>
     <p>You've uploaded <%= books.length %> books!</p>
-    <% } %>
+    <form
+      action="/upload-profile-picture"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="profileImage" accept="image/*" required />
+      <button type="submit">Upload</button>
+    </form>
+    <% if (user.profileImage) { %>
+    <img src="<%= user.profileImage.url %>" alt="Profile Picture" />
+    <% } %> <% } %>
   </div>
 
   <!-- Display the user's books with conditional heading -->
@@ -54,7 +64,7 @@
       </div>
     </div>
     <% } %> <% } else { %>
-    <p>You have not posted any books yet.</p>
+    <p>No books have been posted here yet.</p>
     <% } %>
   </div>
 </div>
