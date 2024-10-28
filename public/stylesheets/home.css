@@ -13,40 +13,53 @@ body {
 }
 
 .text-box {
-  background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+  background-color: rgba(255, 255, 255, 0.9); /* Light background */
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 .text-box h1 {
+  color: #007a33; /* Barnes & Noble green */
   margin-bottom: 20px;
 }
 
 .text-box p {
   font-size: 1.1rem;
   margin-bottom: 20px;
+  color: #333; /* Dark text color */
 }
 
 .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9); /* Match the text-box background color */
   margin-left: 1rem;
   border-bottom: 0.2rem solid transparent;
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.5);
-  border-bottom-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.9); /* Darker text on hover */
+  border-bottom-color: rgba(255, 255, 255, 0.9); /* Matching underline */
 }
 
 .nav-link.active {
-  color: white;
-  border-bottom-color: white;
+  color: rgba(255, 255, 255, 0.9); /* Active link color */
+  border-bottom-color: rgba(255, 255, 255, 0.9); /* Matching underline */
 }
 
-.btn-secondary,
-.btn-secondary:hover {
-  color: #333;
+.btn-secondary {
+  background-color: #f5f5f5; /* Light background */
+  color: #007a33; /* Green text */
   text-shadow: none;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-secondary:hover {
+  background-color: #007a33; /* Dark green on hover */
+  color: #fff; /* White text on hover */
+}
+
+.btn-secondary:focus {
+  outline: none; /* Remove default outline */
 }
