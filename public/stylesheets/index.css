@@ -1,21 +1,20 @@
-/* index.css */
-
 .container {
-  background-color: #191d32;
-  color: #fff;
+  background-color: #f8f9f1; /* Light beige background */
+  color: #333; /* Dark text color */
   border-radius: 0.35rem;
+  padding: 20px;
 }
 
 .text-center .display-4 {
-  color: #6d3b47; /* crimson */
+  color: #3c763d; /* Dark green for heading */
 }
 
 .text-center .lead {
-  color: #e9edc9; /* light Muted text color */
+  color: #5a5a5a; /* Muted dark gray */
 }
 
 .btn-lg {
-  background-color: #6d3b47; /* crimson */
+  background-color: #3c763d; /* Dark green */
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -25,43 +24,38 @@
 }
 
 .btn-lg:hover {
-  background-color: #453a49;
+  background-color: #2c6e2b; /* Slightly darker green on hover */
   color: #fff;
   transform: scale(1.05);
 }
 
 .card {
-  border: 1px solid #282f44;
-  background-color: #282f44;
-  color: #fff;
+  border: 1px solid #ddd;
+  background-color: #fff; /* White background for cards */
+  color: #333; /* Dark text for card content */
 }
 
 .card-title {
-  color: #6d3b47;
+  color: #3c763d; /* Dark green title */
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
-  text-decoration: none; /* Remove underline */
+  transition: text-shadow 0.3;
 }
 
 .card-title:hover {
-  color: #e9edc9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
 }
 
 .card-text {
-  color: #e9edc9;
+  color: #555; /* Dark gray for text */
   font-size: 1rem;
   margin-bottom: 15px;
 }
 
 .card-text small {
   font-size: 0.9rem;
-  color: #e9edc9;
-}
-
-.card-text small {
-  font-size: 0.9rem;
-  color: #ccc;
+  color: #777; /* Lighter gray for small text */
 }
 
 .card img {
@@ -73,13 +67,13 @@
 
 .btn-outline-primary {
   background-color: transparent;
-  color: #fff;
-  border: 1px solid #6d3b47;
+  color: #3c763d; /* Dark green for button */
+  border: 1px solid #3c763d; /* Dark green border */
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .btn-outline-primary:hover {
-  background-color: #453a49;
-  color: #fff;
-  border-color: #453a49;
+  background-color: #3c763d; /* Dark green background on hover */
+  color: #fff; /* White text on hover */
+  border-color: #2c6e2b; /* Darker border on hover */
 }

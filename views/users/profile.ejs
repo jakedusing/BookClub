@@ -22,6 +22,11 @@
           <span role="img" aria-label="wave">👋</span>
         </h3>
         <p>You've uploaded <%= books.length %> books!</p>
+        <% if (user.bio) { %>
+        <p class="bio-display"><strong>Bio:</strong> <%= user.bio %></p>
+        <% } else { %>
+        <p>You have not added a bio yet.</p>
+        <% } %>
         <form
           action="/upload-profile-picture"
           method="POST"
@@ -37,9 +42,11 @@
           method="POST"
           class="bio-update-form"
         >
-          <textarea name="bio" placeholder="Write your bio here..." rows="4">
-<%= user.bio || "" %></textarea
-          >
+          <textarea
+            name="bio"
+            placeholder="Write your bio here..."
+            rows="4"
+          ></textarea>
           <button type="submit">Update Bio</button>
         </form>
       </div>

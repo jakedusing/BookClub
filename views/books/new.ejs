@@ -1,4 +1,6 @@
-<% layout("layouts/boilerplate")%>
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/new.css" />
+
 <div class="row">
   <h1 class="text-center">New Book</h1>
   <div class="col-md-6 offset-md-3">
@@ -35,7 +37,6 @@
             <label class="form-label" for="description">Description</label>
             <textarea
               class="form-control"
-              type="text"
               id="description"
               name="book[description]"
               required
@@ -61,7 +62,7 @@
               required
             />
           </div>
-          <div class="mt-3 mb-5 custom-file">
+          <div class="mt-3 mb-5">
             <label for="image" class="form-label">Choose Images</label>
             <input
               class="form-control"
@@ -70,7 +71,6 @@
               name="image"
               multiple
             />
-            <label for="image" class="custom-file-label text-muted"></label>
           </div>
           <div class="mb-3">
             <button class="btn btn-success">Add Book</button>

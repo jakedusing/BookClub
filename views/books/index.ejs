@@ -33,22 +33,18 @@
       <!-- Book Text Section -->
       <div class="col-12 col-md-8">
         <div class="card-body">
-          <!-- Book Title -->
           <a href="/books/<%= book._id %>" style="text-decoration: none">
             <h5 class="card-title"><%= book.title %></h5>
           </a>
 
-          <!-- Book Description -->
           <p class="card-text">
             <strong>Description:</strong> <%= book.description %>
           </p>
 
-          <!-- Author Info -->
           <p class="card-text">
             <small><strong>Author:</strong> <%= book.author %></small>
           </p>
 
-          <!-- Submitted by Info -->
           <p class="card-text">
             <small>
               <strong>Submitted by:</strong>
@@ -58,7 +54,6 @@
             </small>
           </p>
 
-          <!-- View Book Button -->
           <a href="/books/<%= book._id %>" class="btn btn-outline-primary"
             >View Book</a
           >

@@ -9,13 +9,17 @@
     <% results.forEach(book => { %>
     <div class="col-md-4 mb-3">
       <div class="card">
-        <img
-          src="<%= book.images[0].url %>"
-          class="card-img-top"
-          alt="<%= book.title %>"
-        />
+        <a href="/books/<%= book._id %>">
+          <img
+            src="<%= book.images[0].url %>"
+            class="card-img-top"
+            alt="<%= book.title %>"
+          />
+        </a>
         <div class="card-body">
-          <h5 class="card-title"><%= book.title %></h5>
+          <a href="/books/<%= book._id %>">
+            <h5 class="card-title"><%= book.title %></h5>
+          </a>
           <h6 class="card-subtitle mb-2 text-muted"><%= book.author %></h6>
           <a href="/books/<%= book._id %>" class="btn btn-view">View Details</a>
         </div>
