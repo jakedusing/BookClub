@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "20.15.1"
+  },
   "name": "bookclub",
   "version": "1.0.0",
   "description": "",

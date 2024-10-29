@@ -25,7 +25,7 @@ const MongoDBStore = require("connect-mongo")(session);
 
 // const dbURL = process.env.DB_URL;
 // "mongodb://localhost:27017/bookclub"
-const dbUrl = "mongodb://localhost:27017/bookclub";
+const dbUrl = process.env.DB_URL;
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
