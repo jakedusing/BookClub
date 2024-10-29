@@ -13,53 +13,66 @@ body {
 }
 
 .text-box {
-  background-color: rgba(255, 255, 255, 0.9); /* Light background */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* Centering the text box */
 }
 
 .text-box h1 {
-  color: #007a33; /* Barnes & Noble green */
+  color: #007a33;
   margin-bottom: 20px;
 }
 
 .text-box p {
   font-size: 1.1rem;
   margin-bottom: 20px;
-  color: #333; /* Dark text color */
+  color: #333;
+}
+
+@media (max-width: 576px) {
+  .text-box {
+    padding: 30px; /* Increased padding */
+    margin: 20px; /* Add margin on small screens */
+  }
+
+  .text-box p {
+    font-size: 1rem; /* Smaller font size */
+    line-height: 1.5; /* Increase line height for better readability */
+  }
 }
 
 .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9); /* Match the text-box background color */
+  color: rgba(255, 255, 255, 0.9);
   margin-left: 1rem;
   border-bottom: 0.2rem solid transparent;
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.9); /* Darker text on hover */
-  border-bottom-color: rgba(255, 255, 255, 0.9); /* Matching underline */
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.9);
 }
 
 .nav-link.active {
-  color: rgba(255, 255, 255, 0.9); /* Active link color */
-  border-bottom-color: rgba(255, 255, 255, 0.9); /* Matching underline */
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-secondary {
-  background-color: #f5f5f5; /* Light background */
-  color: #007a33; /* Green text */
+  background-color: #f5f5f5;
+  color: #007a33;
   text-shadow: none;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-secondary:hover {
-  background-color: #007a33; /* Dark green on hover */
-  color: #fff; /* White text on hover */
+  background-color: #007a33;
+  color: #fff;
 }
 
 .btn-secondary:focus {
-  outline: none; /* Remove default outline */
+  outline: none;
 }
