@@ -13,8 +13,8 @@ You can try out the live application here: https://book-club-alpha.vercel.app/bo
 - **User Profiles**: View other users' profiles to see the books they've uploaded, their profile picture, and their bio.
 
 ## Technologies Used
-- -**JavaScript**: The primary programming language.
-- -**Node.js**: For server-side logic.
-- -**Express**: Web framework used for Node.js.
-- -**MongoDB**: NoSQL database for storing user and book data.
-- -**Mongoose**: ODM (Object Data Modeling) library for MongoDB and Node.js.
+- **JavaScript**: The primary programming language.
+- **Node.js**: For server-side logic.
+- **Express**: Web framework used for Node.js.
+- **MongoDB**: NoSQL database for storing user and book data.
+- **Mongoose**: ODM (Object Data Modeling) library for MongoDB and Node.js.
