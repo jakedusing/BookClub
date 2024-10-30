@@ -1,4 +1,4 @@
-#BookClub
+# BookClub
 
 Welcome to **BookClub**!  This application allows users to connect over their love of books.  Users can register, sign in, upload books, add reviews, search for books, and view other users' profiles to discover what others are reading.
 
