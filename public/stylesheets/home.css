@@ -63,3 +63,32 @@ body {
 .btn-secondary:focus {
   outline: none; /* Remove default outline */
 }
+
+@media (max-width: 768px) {
+  .cover-container {
+    max-width: 90vw;
+    padding: 1rem;
+  }
+
+  .text-box {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .text-box h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-box p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+  .btn-secondary {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
+}
